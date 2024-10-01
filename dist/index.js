@@ -31089,24 +31089,42 @@ module.exports = parseParams
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-const core = __nccwpck_require__(7484);
-const github = __nccwpck_require__(3228);
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
+var core = __nccwpck_require__(7484);
+// EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
+var github = __nccwpck_require__(3228);
+;// CONCATENATED MODULE: ./js-build/jira.js
+function getJiraIssueKey(title) {
+    var _a, _b;
+    if (!title) {
+        return null;
+    }
+    return (_b = (_a = title.match(/^([a-zA-Z]+-[\d]+)/)) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : null;
+}
+//# sourceMappingURL=jira.js.map
+;// CONCATENATED MODULE: ./js-build/index.js
+var _a;
+
+
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const githubHeadRef = github.context.githubHeadRef;
-  console.log(`Debug:: githubHeadRef ${githubHeadRef}`);
-
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
+    const prTitle = (_a = github.context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.title;
+    const issueKey = getJiraIssueKey(prTitle);
+    console.log(`Debug:: JIRA issueKey ${issueKey}`);
+    const time = (new Date()).toTimeString();
+    core.setOutput("time", time);
+    const payload = JSON.stringify(github.context.payload, undefined, 2);
+    console.log(`The event payload: ${payload}`);
 }
+catch (error) {
+    core.setFailed(error.message);
+}
+//# sourceMappingURL=index.js.map
+})();
 
 module.exports = __webpack_exports__;
 /******/ })()
