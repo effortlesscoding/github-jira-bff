@@ -1,0 +1,13 @@
+name: 'Jira and Github are Best Friends Forever'
+description: 'Update Jira tickets'
+inputs:
+  id:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  status: # status of output
+    description: 'The status'
+runs:
+  using: 'node20'
+  main: 'index.js'
