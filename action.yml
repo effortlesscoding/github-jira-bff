@@ -1,13 +1,25 @@
 name: 'Jira and Github are Best Friends Forever'
-description: 'Update Jira tickets'
+description: 'Transition Jira ticket statuses when PRs are merged'
 inputs:
-  id:  # id of input
-    description: 'Who to greet'
+  jira-site:
+    description: 'Jira site in xyz.atlassian.net format'
     required: true
-    default: 'World'
-outputs:
-  status: # status of output
-    description: 'The status'
+  jira-username:
+    description: 'Username of a user that will be used for authentication'
+    required: true
+  jira-token:
+    description: 'Password/token of a user that will be used for authentication'
+    required: true
+  github-token:
+    description: 'Github Token used for authentication to leave comments'
+    required: false
+  github-owner:
+    description: 'Github repository owner for leaving PR comments'
+    required: false
+  github-repo:
+    description: 'Github repository repo for leaving PR comments'
+    required: false
+
 runs:
   using: 'node20'
   main: 'dist/index.js'
