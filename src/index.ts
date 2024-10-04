@@ -31,7 +31,7 @@ async function tryTransitionIssue() {
   } catch (error) {
 
     if (error.message.includes('ERR_SOCKET_CONNECTION_TIMEOUT') && attempts < MAX_ATTEMPTS) {
-      logger.info('run', `Failed attempt #${attempts} out of ${MAX_ATTEMPTS} due to ERR_SOCKET_CONNECTION_TIMEOUT`);
+      logger.info('tryTransitionIssue', `Failed attempt #${attempts} out of ${MAX_ATTEMPTS} due to ERR_SOCKET_CONNECTION_TIMEOUT`);
       attempts++;
       await wait(attempts * DELAY_MS_PER_ATTEMPT + DELAY_MS_PER_ATTEMPT);
       tryTransitionIssue();
