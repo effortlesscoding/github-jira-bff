@@ -1,4 +1,4 @@
-name: Validation when the PR is scheduled into the merge queue
+name: Merge queue run
 
 on:
   merge_group:
