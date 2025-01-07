@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Just runs a bogus process
         id: bogus-check
-        run: sleep 180s
+        run: sleep 60s
         shell: bash

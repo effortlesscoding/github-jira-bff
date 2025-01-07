@@ -1,0 +1,15 @@
+name: Validation when the PR is scheduled into the merge queue
+
+on:
+  merge_group:
+    branches:
+      - main
+
+jobs:
+  run-merge-queue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Just runs a bogus merge queue process
+        id: bogus-check
+        run: sleep 10s
+        shell: bash
