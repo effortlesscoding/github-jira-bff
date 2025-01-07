@@ -3,7 +3,7 @@ name: Merge queue run
 on:
   merge_group:
     branches:
-      - main
+      - 'epic/**'
 
 jobs:
   run-merge-queue:
