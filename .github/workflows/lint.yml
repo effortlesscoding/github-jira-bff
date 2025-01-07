@@ -1,0 +1,16 @@
+name: Run some bogus check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Just runs a bogus process
+        id: bogus-check
+        run: sleep 180s
+        shell: bash
