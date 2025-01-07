@@ -1,0 +1,15 @@
+name: Merge queue run
+
+on:
+  merge_group:
+    branches:
+      - 'epic/**'
+
+jobs:
+  run-merge-queue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Just runs a bogus merge queue process
+        id: bogus-check
+        run: sleep 10s
+        shell: bash
